@@ -43,13 +43,22 @@
       "waterCapacity": "N/A"
     },
     "images": [
-      "/yachts/notus/main.jpg",
-      "/yachts/notus/deck.jpg",
-      "/yachts/notus/salon.jpg",
-      "/yachts/notus/cabin.jpg",
-      "/yachts/notus/lower-deck.jpg"
+      "/notus/yacht-exterior.jpg",
+      "/notus/yacht-foredeck.jpg",
+      "/notus/yacht-sun-deck.jpg",
+      "/notus/yacht-upper-deck.jpg",
+      "/notus/yacht-forward-deck.jpg",
+      "/notus/yacht-main-saloon.jpg",
+      "/notus/yacht-saloon-lounge.jpg",
+      "/notus/yacht-entertainment-lounge.jpg",
+      "/notus/yacht-master-cabin.jpg",
+      "/notus/yacht-guest-cabin.jpg",
+      "/notus/yacht-bridge.jpg",
+      "/notus/yacht-helm-controls.jpg",
+      "/notus/yacht-galley.jpg",
+      "/notus/yacht-head-bathroom.jpg"
     ],
-    "mainImage": "/yachts/notus/main.jpg"
+    "mainImage": "/notus/yacht-exterior.jpg"
   },
   {
     "id": "1",
