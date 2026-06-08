@@ -3,7 +3,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -51,6 +51,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+      <GoogleTagManager gtmId="GTM-TM58K52R" />
       <body>
         <Navbar />
         <main>{children}</main>
