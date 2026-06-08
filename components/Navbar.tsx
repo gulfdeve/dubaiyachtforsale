@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { FaWhatsapp, FaBars, FaTimes } from "react-icons/fa";
 
 const navLinks = [
@@ -14,19 +15,31 @@ const WHATSAPP_URL =
   "https://api.whatsapp.com/send?phone=971547928626&text=Hi!%20I%20am%20interested%20in%20a%20yacht%20for%20sale%20in%20Dubai.";
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHomepage = pathname === "/";
+
+  const [isScrolled, setIsScrolled] = useState(!isHomepage);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
+    // Non-homepage pages are always solid
+    if (!isHomepage) {
+      setIsScrolled(true);
+      return;
+    }
     const onScroll = () => setIsScrolled(window.scrollY > 40);
+    // Set initial state
+    setIsScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHomepage]);
+
+  const solid = isScrolled || !isHomepage;
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        solid
           ? "bg-white shadow-md border-b border-[#E2DDD6]"
           : "bg-transparent"
       }`}
@@ -36,16 +49,12 @@ export default function Navbar() {
         <Link href="/" className="flex flex-col leading-none group">
           <span
             className={`font-[family-name:var(--font-cormorant)] font-semibold text-2xl tracking-wide transition-colors ${
-              isScrolled ? "text-[#003057]" : "text-white"
+              solid ? "text-[#003057]" : "text-white"
             }`}
           >
             SellMyYacht
           </span>
-          <span
-            className={`text-[0.6rem] tracking-[0.25em] uppercase transition-colors ${
-              isScrolled ? "text-[#C9A84C]" : "text-[#C9A84C]"
-            }`}
-          >
+          <span className="text-[0.6rem] tracking-[0.25em] uppercase text-[#C9A84C]">
             Dubai
           </span>
         </Link>
@@ -57,7 +66,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={`text-sm tracking-wide font-medium transition-colors hover:text-[#C9A84C] ${
-                isScrolled ? "text-[#1D2B3A]" : "text-white"
+                solid ? "text-[#1D2B3A]" : "text-white"
               }`}
             >
               {link.label}
@@ -77,7 +86,7 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           className={`md:hidden p-2 transition-colors ${
-            isScrolled ? "text-[#003057]" : "text-white"
+            solid ? "text-[#003057]" : "text-white"
           }`}
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"

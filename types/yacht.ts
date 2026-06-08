@@ -24,6 +24,7 @@ export interface Yacht {
   location: string;
   status: string;
   isFeatured: boolean;
+  hidden?: boolean;
   description: string;
   features: string[];
   specs: YachtSpec;

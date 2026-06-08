@@ -3,10 +3,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FaWhatsapp, FaRuler, FaCalendarAlt, FaBed, FaUsers, FaMapMarkerAlt, FaArrowLeft, FaAnchor } from "react-icons/fa";
 import YachtCard from "@/components/YachtCard";
+import InquiryForm from "@/components/InquiryForm";
 import yachtsData from "@/data/yachts.json";
 import type { Yacht } from "@/types/yacht";
 
-const yachts: Yacht[] = yachtsData as Yacht[];
+const yachts: Yacht[] = (yachtsData as Yacht[]).filter((y) => !y.hidden);
 
 const WHATSAPP_BASE =
   "https://api.whatsapp.com/send?phone=971547928626&text=Hi!%20I%20am%20interested%20in%20the%20";
@@ -30,6 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 function formatPrice(aed: number): string {
+  if (!aed || aed === 0) return "Price on Request";
   if (aed >= 1_000_000) return `AED ${(aed / 1_000_000).toFixed(1)}M`;
   return `AED ${aed.toLocaleString()}`;
 }
@@ -109,9 +111,11 @@ export default async function YachtDetailPage({ params }: PageProps) {
                 <p className="font-[family-name:var(--font-cormorant)] font-semibold text-3xl text-[#003057]">
                   {formatPrice(yacht.priceAED)}
                 </p>
-                <p className="text-[#6B7B8D] text-xs mt-1">
-                  ≈ USD {yacht.priceUSD.toLocaleString()}
-                </p>
+                {yacht.priceUSD > 0 && (
+                  <p className="text-[#6B7B8D] text-xs mt-1">
+                    ≈ USD {yacht.priceUSD.toLocaleString()}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -177,85 +181,8 @@ export default async function YachtDetailPage({ params }: PageProps) {
 
           {/* Right — Inquiry Card */}
           <div className="lg:col-span-1">
-            <div className="sticky top-28 border border-[#E2DDD6] bg-white shadow-lg">
-              <div className="bg-[#003057] px-6 py-5">
-                <p className="text-[#C9A84C] text-xs tracking-[0.2em] uppercase font-medium mb-1">
-                  Interested?
-                </p>
-                <p className="font-[family-name:var(--font-cormorant)] font-semibold text-xl text-white">
-                  Request More Info
-                </p>
-              </div>
-
-              <div className="p-6">
-                <form className="flex flex-col gap-4">
-                  <div>
-                    <label className="block text-xs text-[#6B7B8D] uppercase tracking-wide mb-1.5" htmlFor="name">
-                      Full Name *
-                    </label>
-                    <input
-                      id="name"
-                      type="text"
-                      required
-                      className="w-full border border-[#E2DDD6] px-3 py-2.5 text-sm text-[#1D2B3A] focus:outline-none focus:border-[#C9A84C]"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs text-[#6B7B8D] uppercase tracking-wide mb-1.5" htmlFor="email">
-                      Email *
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      required
-                      className="w-full border border-[#E2DDD6] px-3 py-2.5 text-sm text-[#1D2B3A] focus:outline-none focus:border-[#C9A84C]"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs text-[#6B7B8D] uppercase tracking-wide mb-1.5" htmlFor="phone">
-                      Phone
-                    </label>
-                    <input
-                      id="phone"
-                      type="tel"
-                      className="w-full border border-[#E2DDD6] px-3 py-2.5 text-sm text-[#1D2B3A] focus:outline-none focus:border-[#C9A84C]"
-                      placeholder="+971 50 000 0000"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs text-[#6B7B8D] uppercase tracking-wide mb-1.5" htmlFor="message">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={3}
-                      className="w-full border border-[#E2DDD6] px-3 py-2.5 text-sm text-[#1D2B3A] focus:outline-none focus:border-[#C9A84C] resize-none"
-                      defaultValue={`I am interested in the ${yacht.name} and would like more information.`}
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full bg-[#003057] hover:bg-[#001f3d] text-white font-medium py-3 text-sm tracking-wide transition-colors"
-                  >
-                    Send Inquiry
-                  </button>
-                </form>
-
-                <div className="mt-4 pt-4 border-t border-[#E2DDD6]">
-                  <p className="text-center text-[#6B7B8D] text-xs mb-3">Or contact us directly</p>
-                  <a
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe57] text-white font-medium py-3 text-sm transition-colors"
-                  >
-                    <FaWhatsapp size={17} />
-                    WhatsApp About This Yacht
-                  </a>
-                </div>
-              </div>
+            <div className="sticky top-28">
+              <InquiryForm yachtName={yacht.name} yachtSlug={yacht.slug} />
             </div>
           </div>
         </div>

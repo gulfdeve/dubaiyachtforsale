@@ -9,6 +9,7 @@ interface YachtCardProps {
 }
 
 function formatPrice(aed: number): string {
+  if (!aed || aed === 0) return "Price on Request";
   if (aed >= 1_000_000) {
     return `AED ${(aed / 1_000_000).toFixed(1)}M`;
   }

@@ -10,6 +10,6 @@ export const metadata: Metadata = {
 };
 
 export default function YachtsPage() {
-  const yachts: Yacht[] = yachtsData as Yacht[];
+  const yachts: Yacht[] = (yachtsData as Yacht[]).filter((y) => !y.hidden);
   return <YachtListingsClient yachts={yachts} />;
 }

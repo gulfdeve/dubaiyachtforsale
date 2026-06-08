@@ -1,5 +1,57 @@
 [
   {
+    "id": "notus-1",
+    "slug": "notus-58ft-azimut-2002",
+    "name": "NOTUS",
+    "builder": "Azimut",
+    "type": "Motor Yacht",
+    "year": 2002,
+    "lengthFt": 58,
+    "lengthM": 17.68,
+    "cabins": 3,
+    "guests": 28,
+    "priceAED": 0,
+    "priceUSD": 0,
+    "location": "Dubai Marina",
+    "status": "For Sale",
+    "isFeatured": true,
+    "hidden": false,
+    "description": "Step aboard the 58ft NOTUS, where modern luxury meets adventure. This stunning Azimut yacht is designed to provide the ultimate experience at sea, whether you're planning a family gathering, a corporate event, or a special celebration. With its sleek design, spacious layout, and top-notch amenities, the NOTUS promises a day filled with comfort and unforgettable moments. Privately owned with meticulous care and maintenance throughout its ownership.",
+    "features": [
+      "3 Cabins with En-Suite Bathrooms",
+      "28-Guest Capacity",
+      "Lower and Upper Decks (2 Decks)",
+      "Modern Salon with Plush Seating",
+      "Air Conditioning Throughout",
+      "Panoramic Windows",
+      "Spacious Open Air Deck",
+      "Electric Grill",
+      "Microwave Oven",
+      "Refrigerator",
+      "Music System (Bluetooth & AUX)",
+      "MTU Engines",
+      "Marine Hull Insurance (valid 12.12.2026)",
+      "Privately Owned – Meticulous Maintenance"
+    ],
+    "specs": {
+      "beam": "5.3m",
+      "draft": "1.6m",
+      "engines": "MTU 442-901-520-981513 | MTU 442-901-520-981514",
+      "maxSpeed": "22 knots",
+      "cruisingSpeed": "18 knots",
+      "fuelCapacity": "N/A",
+      "waterCapacity": "N/A"
+    },
+    "images": [
+      "/yachts/notus/main.jpg",
+      "/yachts/notus/deck.jpg",
+      "/yachts/notus/salon.jpg",
+      "/yachts/notus/cabin.jpg",
+      "/yachts/notus/lower-deck.jpg"
+    ],
+    "mainImage": "/yachts/notus/main.jpg"
+  },
+  {
     "id": "1",
     "slug": "azimut-75-flybridge-2022",
     "name": "Azimut 75 Flybridge",
@@ -14,6 +66,7 @@
     "priceUSD": 3948000,
     "location": "Dubai Marina",
     "status": "For Sale",
+    "hidden": true,
     "isFeatured": true,
     "description": "An exceptional 2022 Azimut 75 Flybridge in pristine condition. This stunning vessel combines contemporary Italian design with outstanding performance. The spacious flybridge offers panoramic views while the interior showcases Azimut's signature elegance with premium finishes throughout. Perfect for cruising the Arabian Gulf in ultimate comfort.",
     "features": [
@@ -60,6 +113,7 @@
     "priceUSD": 3213000,
     "location": "Dubai Marina",
     "status": "For Sale",
+    "hidden": true,
     "isFeatured": true,
     "description": "A sleek and powerful 2020 Sunseeker Predator 74, the pinnacle of British craftsmanship. This sports cruiser delivers breathtaking performance with an aggressive silhouette that turns heads in any marina. The open-plan saloon floods with natural light and features premium leather furnishings throughout.",
     "features": [
@@ -105,6 +159,7 @@
     "priceUSD": 4411000,
     "location": "Palm Jumeirah",
     "status": "For Sale",
+    "hidden": true,
     "isFeatured": true,
     "description": "The Ferretti 780 is a masterpiece of Italian yacht building. With its sweeping lines and distinguished profile, this vessel represents the very best of Mediterranean luxury adapted for the Arabian Gulf. The expansive beach club and open-air dining areas make it ideal for entertaining in Dubai's warm climate.",
     "features": [
@@ -150,6 +205,7 @@
     "priceUSD": 2587000,
     "location": "Dubai Marina",
     "status": "For Sale",
+    "hidden": true,
     "isFeatured": false,
     "description": "A beautifully maintained 2019 Princess Y72, offering exceptional value in the current market. This flagship Princess model features a bold design with exceptional sea-keeping abilities. The full-beam master suite is a sanctuary of luxury, with four cabins accommodating eight guests in total comfort.",
     "features": [
@@ -193,6 +249,7 @@
     "priceUSD": 25869000,
     "location": "Port Rashid, Dubai",
     "status": "For Sale",
+    "hidden": true,
     "isFeatured": false,
     "description": "A rare opportunity to acquire a bespoke 55m Benetti superyacht. Completely custom-built with no expense spared, this vessel features six lavish guest suites, a full-beam owner's deck, cinema room, spa with hammam, and a permanent crew of 12. Refit completed 2023.",
     "features": [
@@ -236,6 +293,7 @@
     "priceUSD": 871000,
     "location": "Dubai Marina",
     "status": "For Sale",
+    "hidden": true,
     "isFeatured": false,
     "description": "Brand new 2023 Gulf Craft Majesty 48 — the perfect entry into luxury yacht ownership in Dubai. Built locally and designed specifically for the Gulf's warm waters, this vessel offers exceptional quality at a competitive price. Under full Gulf Craft warranty with preferred service network access across the UAE.",
     "features": [
