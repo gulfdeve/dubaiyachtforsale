@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -18,6 +19,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  verification: {
+    google: "_JrO_MaNoIi5LH-CPg-uIJ6NfL_Q1IuDfnq28Cg85Cg",
+  },
   title: {
     default: "Sell My Yacht Dubai | Luxury Yachts For Sale in Dubai",
     template: "%s | Sell My Yacht Dubai",
@@ -52,6 +56,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
       </body>
+      <GoogleAnalytics gaId="G-YP3J47QB8F" />
     </html>
   );
 }
