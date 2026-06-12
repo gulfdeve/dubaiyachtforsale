@@ -20,6 +20,7 @@
 
   /* Fonts */
   --font-heading: var(--font-cormorant);
+  --font-display: var(--font-playfair);
   --font-sans:    var(--font-inter);
 }
 
@@ -45,6 +46,16 @@ body {
   background-color: #C9A84C;
   display: block;
   margin: 0 auto;
+}
+
+/* Brand wordmark — Cinzel, distinct from page headings */
+.font-logo {
+  font-family: var(--font-logo), Georgia, "Times New Roman", serif;
+}
+
+/* Luxury display headings (yacht detail & premium sections) */
+.font-display {
+  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
 }
 
 /* Utility: section heading */
@@ -87,5 +98,13 @@ img {
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in-up {
     animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  img {
+    transition: none;
   }
 }
