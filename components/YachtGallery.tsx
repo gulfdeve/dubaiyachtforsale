@@ -99,15 +99,15 @@ export default function YachtGallery({
                   <img
                     src={item.src}
                     alt={item.alt}
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02] motion-reduce:transition-none"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#001220]/80 via-[#001220]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <span className="absolute top-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#003057] opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#001220]/85 via-[#001220]/25 to-transparent pointer-events-none" />
+                  <span className="absolute top-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#003057] opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md motion-reduce:transition-none">
                     <FaExpand size={12} aria-hidden="true" />
                   </span>
                   {item.caption && (
-                    <figcaption className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                    <figcaption className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 pointer-events-none">
                       <p className="text-[#C9A84C] text-[0.55rem] tracking-[0.25em] uppercase mb-1">
                         {GALLERY_CATEGORY_LABELS[item.category]}
                       </p>
