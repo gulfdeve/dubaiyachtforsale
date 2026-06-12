@@ -36,6 +36,7 @@ export interface Yacht {
   features: string[];
   specs: YachtSpec;
   images: string[];
+  imageCaptions?: string[];
   mainImage: string;
   decks?: string;
   extendedSpecs?: Array<{ label: string; value: string }>;
