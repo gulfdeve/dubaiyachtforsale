@@ -57,7 +57,7 @@ export default async function YachtDetailPage({ params }: PageProps) {
     { icon: FaRuler, label: "Length", value: `${yacht.lengthFt}ft / ${yacht.lengthM}m` },
     { icon: FaCalendarAlt, label: "Year Built", value: String(yacht.year) },
     { icon: FaAnchor, label: "Builder", value: yacht.builder },
-    { icon: FaBed, label: "Cabins", value: `${yacht.cabins} Cabins` },
+    { icon: FaBed, label: "Cabins", value: yacht.cabins === 0 ? "No Cabin" : `${yacht.cabins} Cabins` },
     { icon: FaUsers, label: "Capacity", value: `${yacht.guests} Guests` },
     { icon: FaBolt, label: "Max Speed", value: yacht.specs.maxSpeed },
   ];
@@ -69,11 +69,16 @@ export default async function YachtDetailPage({ params }: PageProps) {
     { label: "Engines", value: yacht.specs.engines },
     { label: "Max Speed", value: yacht.specs.maxSpeed },
     { label: "Cruising Speed", value: yacht.specs.cruisingSpeed },
-    { label: "Port Engine Hours", value: "3,229 Hours" },
-    { label: "STBD Engine Hours", value: "3,400 Hours" },
-    { label: "Decks", value: "Lower and Upper (2 Decks)" },
-    { label: "Cabins", value: `${yacht.cabins} (all en-suite)` },
+    ...(yacht.decks ? [{ label: "Decks", value: yacht.decks }] : []),
+    {
+      label: "Cabins",
+      value:
+        yacht.cabins === 0
+          ? "No Cabin"
+          : `${yacht.cabins}${yacht.cabins > 1 ? " (all en-suite)" : ""}`,
+    },
     { label: "Guest Capacity", value: `${yacht.guests} Guests` },
+    ...(yacht.extendedSpecs ?? []),
   ];
 
   // images[0] is hero, rest are gallery
@@ -117,7 +122,8 @@ export default async function YachtDetailPage({ params }: PageProps) {
             {yacht.name}
           </h1>
           <p className="text-white/50 text-sm tracking-[0.22em] uppercase mb-10">
-            {yacht.builder} &nbsp;·&nbsp; {yacht.lengthFt} Feet &nbsp;·&nbsp; {yacht.year}
+            {yacht.builder} &nbsp;·&nbsp; {yacht.lengthFt} Feet
+            {yacht.year > 0 && <> &nbsp;·&nbsp; {yacht.year}</>}
           </p>
 
           {/* Price + primary CTA */}
@@ -232,28 +238,29 @@ export default async function YachtDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Insurance box */}
-            <div className="border border-[#E2DDD6] bg-[#F8F5F0] p-6">
-              <p className="text-[#C9A84C] text-[0.62rem] uppercase tracking-[0.28em] font-medium mb-2">
-                Insurance
-              </p>
-              <h3 className="font-[family-name:var(--font-cormorant)] font-semibold text-xl text-[#003057] mb-5">
-                Marine Hull — Valid Until 12 December 2026
-              </h3>
-              <div className="space-y-3 border-t border-[#E2DDD6] pt-4">
-                {[
-                  ["Insurance Type", "Marine Hull"],
-                  ["Hull Value", "AED 1,874,250"],
-                  ["Third Party Liability", "AED 3,000,000 (combined single limit)"],
-                  ["Coverage", "Institute Yacht Clauses — Personal Effects Clause"],
-                ].map(([label, val]) => (
-                  <div key={label} className="flex justify-between text-sm gap-4">
-                    <span className="text-[#6B7B8D] shrink-0">{label}</span>
-                    <span className="text-[#1D2B3A] font-medium text-right">{val}</span>
-                  </div>
-                ))}
+            {yacht.insurance && (
+              <div className="border border-[#E2DDD6] bg-[#F8F5F0] p-6">
+                <p className="text-[#C9A84C] text-[0.62rem] uppercase tracking-[0.28em] font-medium mb-2">
+                  Insurance
+                </p>
+                <h3 className="font-[family-name:var(--font-cormorant)] font-semibold text-xl text-[#003057] mb-5">
+                  Marine Hull — Valid Until {yacht.insurance.validUntil}
+                </h3>
+                <div className="space-y-3 border-t border-[#E2DDD6] pt-4">
+                  {[
+                    ["Insurance Type", "Marine Hull"],
+                    ["Hull Value", yacht.insurance.hullValue],
+                    ["Third Party Liability", yacht.insurance.thirdPartyLiability],
+                    ["Coverage", yacht.insurance.coverage],
+                  ].map(([label, val]) => (
+                    <div key={label} className="flex justify-between text-sm gap-4">
+                      <span className="text-[#6B7B8D] shrink-0">{label}</span>
+                      <span className="text-[#1D2B3A] font-medium text-right">{val}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Ownership note */}
             <div className="flex items-start gap-4 border-l-2 border-[#C9A84C] pl-5 py-1">
@@ -421,11 +428,12 @@ export default async function YachtDetailPage({ params }: PageProps) {
                 <div className="mb-12">
                   <p className="text-[#C9A84C] text-[0.62rem] uppercase tracking-[0.28em] mb-3">Accommodation</p>
                   <h2 className="font-[family-name:var(--font-cormorant)] font-semibold text-[2.5rem] text-[#003057] leading-tight">
-                    3 Luxurious Cabins,<br />Each with En-Suite Bathroom
+                    {yacht.cabins} Luxurious Cabin{yacht.cabins !== 1 ? "s" : ""},<br />
+                    {yacht.cabins > 1 ? "Each with En-Suite Bathroom" : "With En-Suite Bathroom"}
                   </h2>
                   <div className="w-10 h-px bg-[#C9A84C] mt-5 mb-5" />
                   <p className="text-[#4B5A6B] text-base leading-relaxed max-w-2xl">
-                    Whether you&apos;re planning an overnight stay or an extended voyage, the NOTUS
+                    Whether you&apos;re planning an overnight stay or an extended voyage, {yacht.name}
                     offers the privacy and comfort of a fine boutique hotel on the water.
                   </p>
                 </div>
@@ -481,7 +489,7 @@ export default async function YachtDetailPage({ params }: PageProps) {
                     Command the Seas
                   </h2>
                   <p className="text-white/50 text-sm mt-4 tracking-widest uppercase">
-                    Full Navigation Bridge · MTU Engines · 22 Knots
+                    Full Navigation Bridge · {yacht.specs.engines} · {yacht.specs.maxSpeed}
                   </p>
                 </div>
               </div>
@@ -520,7 +528,7 @@ export default async function YachtDetailPage({ params }: PageProps) {
       <section className="bg-[#003057] py-24 px-6">
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-[#C9A84C] text-[0.62rem] uppercase tracking-[0.32em] mb-4">
-            Ready to Make NOTUS Yours?
+            Ready to Make {yacht.name} Yours?
           </p>
           <h2 className="font-[family-name:var(--font-cormorant)] font-light text-white leading-tight mb-6"
             style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)" }}>
@@ -528,8 +536,8 @@ export default async function YachtDetailPage({ params }: PageProps) {
           </h2>
           <div className="w-10 h-px bg-[#C9A84C] mx-auto mb-7" />
           <p className="text-white/50 text-sm leading-[1.8] mb-10 max-w-lg mx-auto">
-            NOTUS is a rare opportunity — a privately owned, meticulously maintained Azimut 58ft
-            available in Dubai Marina. Our team can arrange viewings, sea trials, and provide
+            {yacht.name} is a rare opportunity — a {yacht.lengthFt}ft {yacht.builder} {yacht.type.toLowerCase()}
+            available in {yacht.location}. Our team can arrange viewings, sea trials, and provide
             full documentation on request.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -8,6 +8,13 @@ export interface YachtSpec {
   waterCapacity: string;
 }
 
+export interface YachtInsurance {
+  validUntil: string;
+  hullValue: string;
+  thirdPartyLiability: string;
+  coverage: string;
+}
+
 export interface Yacht {
   id: string;
   slug: string;
@@ -30,4 +37,7 @@ export interface Yacht {
   specs: YachtSpec;
   images: string[];
   mainImage: string;
+  decks?: string;
+  extendedSpecs?: Array<{ label: string; value: string }>;
+  insurance?: YachtInsurance;
 }
