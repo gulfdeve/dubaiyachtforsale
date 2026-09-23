@@ -62,7 +62,7 @@ const yachts: Yacht[] = (yachtsData as Yacht[]).filter((y) => !y.hidden);
 
 const WHATSAPP_BASE =
 
-  "https://api.whatsapp.com/send?phone=971547928626&text=Hi!%20I%20am%20interested%20in%20the%20";
+  "https://api.whatsapp.com/send?phone=971543379499&text=Hi!%20I%20am%20interested%20in%20the%20";
 
 
 

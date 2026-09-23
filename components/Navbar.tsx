@@ -13,7 +13,7 @@ const navLinks = [
 ];
 
 const WHATSAPP_URL =
-  "https://api.whatsapp.com/send?phone=971547928626&text=Hi!%20I%20am%20interested%20in%20a%20yacht%20for%20sale%20in%20Dubai.";
+  "https://api.whatsapp.com/send?phone=971543379499&text=Hi!%20I%20am%20interested%20in%20a%20yacht%20for%20sale%20in%20Dubai.";
 
 const isActivePath = (pathname: string, href: string) => {
   if (href === "/yachts") {

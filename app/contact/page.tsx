@@ -8,13 +8,13 @@ export const metadata: Metadata = {
 };
 
 const WHATSAPP_URL =
-  "https://api.whatsapp.com/send?phone=971547928626&text=Hi!%20I%20would%20like%20to%20speak%20with%20a%20yacht%20broker.";
+  "https://api.whatsapp.com/send?phone=971543379499&text=Hi!%20I%20would%20like%20to%20speak%20with%20a%20yacht%20broker.";
 
 const contactCards = [
   {
     icon: FaWhatsapp,
     title: "WhatsApp",
-    value: "+971 54 792 8626",
+    value: "+971 54 337 9499",
     href: WHATSAPP_URL,
     desc: "Fastest response · Available 7 days",
     color: "#25D366",
@@ -22,8 +22,8 @@ const contactCards = [
   {
     icon: FaPhone,
     title: "Phone",
-    value: "+971 54 792 8626",
-    href: "tel:+971547928626",
+    value: "+971 54 337 9499",
+    href: "tel:+971543379499",
     desc: "Sun–Thu 9am–7pm · Fri–Sat 10am–6pm",
     color: "#003057",
   },

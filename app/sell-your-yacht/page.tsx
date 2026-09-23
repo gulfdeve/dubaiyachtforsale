@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const WHATSAPP_URL =
-  "https://api.whatsapp.com/send?phone=971547928626&text=Hi!%20I%20would%20like%20to%20sell%20my%20yacht.%20Can%20you%20provide%20a%20free%20valuation?";
+  "https://api.whatsapp.com/send?phone=971543379499&text=Hi!%20I%20would%20like%20to%20sell%20my%20yacht.%20Can%20you%20provide%20a%20free%20valuation?";
 
 const steps = [
   {

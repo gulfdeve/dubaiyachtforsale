@@ -5,7 +5,7 @@ import yachtsData from "@/data/yachts.json";
 import type { Yacht } from "@/types/yacht";
 
 const WHATSAPP_URL =
-  "https://api.whatsapp.com/send?phone=971547928626&text=Hi!%20I%20am%20interested%20in%20a%20yacht%20for%20sale%20in%20Dubai.";
+  "https://api.whatsapp.com/send?phone=971543379499&text=Hi!%20I%20am%20interested%20in%20a%20yacht%20for%20sale%20in%20Dubai.";
 
 const yachts: Yacht[] = yachtsData as Yacht[];
 const featuredYachts = yachts.filter((y) => y.isFeatured && !y.hidden).slice(0, 3);
