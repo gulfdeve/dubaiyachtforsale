@@ -37,8 +37,8 @@ export const metadata: Metadata = {
     google: "_JrO_MaNoIi5LH-CPg-uIJ6NfL_Q1IuDfnq28Cg85Cg",
   },
   title: {
-    default: "Sell My Yacht Dubai | Luxury Yachts For Sale in Dubai",
-    template: "%s | Sell My Yacht Dubai",
+    default: "Yachts For Sale in Dubai | Luxury Yachts For Sale in Dubai",
+    template: "%s | Yachts For Sale in Dubai",
   },
   description:
     "Browse premium luxury yachts for sale in Dubai. Expert yacht brokerage services. Find your perfect vessel or list your yacht with Dubai's trusted yacht specialists.",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     "Dubai Marina yachts",
   ],
   openGraph: {
-    title: "Sell My Yacht Dubai | Luxury Yachts For Sale",
+    title: "Yachts For Sale in Dubai | Luxury Yachts For Sale",
     description: "Premium luxury yachts for sale in Dubai. Expert brokerage services.",
     type: "website",
     locale: "en_AE",

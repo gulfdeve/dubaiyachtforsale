@@ -108,7 +108,7 @@ export async function generateMetadata({
 
   return {
 
-    title: `${yacht.name} for Sale | Sell My Yacht Dubai`,
+    title: `${yacht.name} for Sale | Yachts For Sale in Dubai`,
 
     description: `${yacht.name} — ${yacht.lengthFt}ft ${yacht.builder} ${yacht.type} for sale in ${yacht.location}. ${yacht.cabins} cabins, ${yacht.guests} guests. Contact us for pricing.`,
 

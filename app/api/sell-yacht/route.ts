@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
       from: FROM,
       to: TO,
       replyTo: email,
-      subject: `🛥️ Sell My Yacht Request: ${yachtName}`,
+      subject: `🛥️ Yachts For Sale in Dubai Request: ${yachtName}`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #E2DDD6;border-radius:4px;overflow:hidden">
           <div style="background:#003057;padding:24px 32px">
