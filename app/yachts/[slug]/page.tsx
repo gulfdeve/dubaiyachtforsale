@@ -26,6 +26,8 @@ import {
 
 } from "react-icons/fa";
 
+import GtagConversionPageView from "@/components/GtagConversionPageView";
+
 import InquiryForm from "@/components/InquiryForm";
 
 import YachtGallery from "@/components/YachtGallery";
@@ -237,6 +239,8 @@ export default async function YachtDetailPage({ params }: PageProps) {
   return (
 
     <>
+
+      {slug === "notus-58ft-azimut-2002" ? <GtagConversionPageView /> : null}
 
       <YachtHeroGallery
 
