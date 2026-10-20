@@ -1,33 +1,13 @@
-"use client";
-
-import { useEffect } from "react";
-
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-  }
-}
+import Script from "next/script";
 
 export default function GtagConversionPageView() {
-  useEffect(() => {
-    const send = () => {
-      if (typeof window.gtag !== "function") return false;
-      window.gtag("event", "conversion_event_page_view", {});
-      return true;
-    };
-
-    if (send()) return;
-
-    const interval = window.setInterval(() => {
-      if (send()) window.clearInterval(interval);
-    }, 200);
-    const timeout = window.setTimeout(() => window.clearInterval(interval), 10000);
-
-    return () => {
-      window.clearInterval(interval);
-      window.clearTimeout(timeout);
-    };
-  }, []);
-
-  return null;
+  return (
+    <Script id="gtag-conversion-notus" strategy="afterInteractive">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('event', 'conversion_event_page_view', {});
+      `}
+    </Script>
+  );
 }
