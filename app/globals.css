@@ -108,3 +108,8 @@ img {
     transition: none;
   }
 }
+
+/* match phone dial code to other inputs */
+.iti__selected-dial-code {
+  font-size: 0.875rem;
+}

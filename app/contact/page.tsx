@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ContactForm from "@/components/ContactForm";
 import { FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 
 export const metadata: Metadata = {
@@ -112,82 +113,7 @@ export default function ContactPage() {
             </h2>
             <span className="gold-divider !mx-0 mb-8" />
 
-            <form className="flex flex-col gap-5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-xs text-[#6B7B8D] uppercase tracking-wide mb-1.5" htmlFor="c-name">
-                    Full Name *
-                  </label>
-                  <input
-                    id="c-name"
-                    type="text"
-                    required
-                    className="w-full border border-[#E2DDD6] px-4 py-3 text-sm text-[#1D2B3A] focus:outline-none focus:border-[#C9A84C]"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs text-[#6B7B8D] uppercase tracking-wide mb-1.5" htmlFor="c-email">
-                    Email *
-                  </label>
-                  <input
-                    id="c-email"
-                    type="email"
-                    required
-                    className="w-full border border-[#E2DDD6] px-4 py-3 text-sm text-[#1D2B3A] focus:outline-none focus:border-[#C9A84C]"
-                    placeholder="your@email.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs text-[#6B7B8D] uppercase tracking-wide mb-1.5" htmlFor="c-phone">
-                  Phone / WhatsApp
-                </label>
-                <input
-                  id="c-phone"
-                  type="tel"
-                  className="w-full border border-[#E2DDD6] px-4 py-3 text-sm text-[#1D2B3A] focus:outline-none focus:border-[#C9A84C]"
-                  placeholder="+971 50 000 0000"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs text-[#6B7B8D] uppercase tracking-wide mb-1.5" htmlFor="c-subject">
-                  Subject
-                </label>
-                <select
-                  id="c-subject"
-                  className="w-full border border-[#E2DDD6] px-4 py-3 text-sm text-[#1D2B3A] bg-white focus:outline-none focus:border-[#C9A84C]"
-                >
-                  <option value="">Select a topic...</option>
-                  <option value="buying">I want to buy a yacht</option>
-                  <option value="selling">I want to sell my yacht</option>
-                  <option value="valuation">Free valuation request</option>
-                  <option value="other">General inquiry</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs text-[#6B7B8D] uppercase tracking-wide mb-1.5" htmlFor="c-message">
-                  Message *
-                </label>
-                <textarea
-                  id="c-message"
-                  rows={5}
-                  required
-                  className="w-full border border-[#E2DDD6] px-4 py-3 text-sm text-[#1D2B3A] focus:outline-none focus:border-[#C9A84C] resize-none"
-                  placeholder="Tell us how we can help..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="bg-[#003057] hover:bg-[#001f3d] text-white font-medium py-4 text-sm tracking-widest uppercase transition-colors"
-              >
-                Send Message
-              </button>
-            </form>
+            <ContactForm />
           </div>
 
           {/* Hours & Info */}

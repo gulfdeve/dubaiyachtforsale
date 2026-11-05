@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createTransporter, TO, FROM } from "@/lib/mailer";
+import { createTransporter, TO, FROM, esc } from "@/lib/mailer";
 
 const SUBJECTS: Record<string, string> = {
   buying: "Buying Inquiry",
@@ -19,13 +19,13 @@ export async function POST(req: NextRequest) {
     if (!message?.trim()) return NextResponse.json({ error: "Message is required." }, { status: 400 });
 
     const transporter = createTransporter();
-    const subjectLabel = SUBJECTS[subject] || subject || "General Inquiry";
+    const subjectLabel = esc(SUBJECTS[subject] || subject || "General Inquiry");
 
     await transporter.sendMail({
       from: FROM,
       to: TO,
       replyTo: email,
-      subject: `📩 Contact: ${subjectLabel} — ${name}`,
+      subject: `Contact: ${subjectLabel} — ${String(name).replace(/[\r\n]/g, " ")}`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #E2DDD6;border-radius:4px;overflow:hidden">
           <div style="background:#003057;padding:24px 32px">
@@ -34,11 +34,11 @@ export async function POST(req: NextRequest) {
           </div>
           <div style="padding:32px">
             <table style="width:100%;border-collapse:collapse">
-              <tr><td style="padding:8px 0;color:#6B7B8D;font-size:12px;width:120px;text-transform:uppercase;letter-spacing:1px">Name</td><td style="padding:8px 0;color:#1D2B3A;font-weight:600">${name}</td></tr>
-              <tr><td style="padding:8px 0;color:#6B7B8D;font-size:12px;text-transform:uppercase;letter-spacing:1px">Email</td><td style="padding:8px 0"><a href="mailto:${email}" style="color:#003057">${email}</a></td></tr>
-              ${phone ? `<tr><td style="padding:8px 0;color:#6B7B8D;font-size:12px;text-transform:uppercase;letter-spacing:1px">Phone</td><td style="padding:8px 0"><a href="tel:${phone}" style="color:#003057">${phone}</a></td></tr>` : ""}
+              <tr><td style="padding:8px 0;color:#6B7B8D;font-size:12px;width:120px;text-transform:uppercase;letter-spacing:1px">Name</td><td style="padding:8px 0;color:#1D2B3A;font-weight:600">${esc(name)}</td></tr>
+              <tr><td style="padding:8px 0;color:#6B7B8D;font-size:12px;text-transform:uppercase;letter-spacing:1px">Email</td><td style="padding:8px 0"><a href="mailto:${esc(email)}" style="color:#003057">${esc(email)}</a></td></tr>
+              ${phone ? `<tr><td style="padding:8px 0;color:#6B7B8D;font-size:12px;text-transform:uppercase;letter-spacing:1px">Phone</td><td style="padding:8px 0"><a href="tel:${esc(phone)}" style="color:#003057">${esc(phone)}</a></td></tr>` : ""}
               <tr><td style="padding:8px 0;color:#6B7B8D;font-size:12px;text-transform:uppercase;letter-spacing:1px">Topic</td><td style="padding:8px 0;color:#1D2B3A">${subjectLabel}</td></tr>
-              <tr><td style="padding:8px 0;color:#6B7B8D;font-size:12px;text-transform:uppercase;letter-spacing:1px;vertical-align:top">Message</td><td style="padding:8px 0;color:#1D2B3A;line-height:1.6">${message.replace(/\n/g, "<br>")}</td></tr>
+              <tr><td style="padding:8px 0;color:#6B7B8D;font-size:12px;text-transform:uppercase;letter-spacing:1px;vertical-align:top">Message</td><td style="padding:8px 0;color:#1D2B3A;line-height:1.6">${esc(message).replace(/\n/g, "<br>")}</td></tr>
             </table>
           </div>
           <div style="background:#F8F5F0;padding:16px 32px;font-size:11px;color:#6B7B8D">

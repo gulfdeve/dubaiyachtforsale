@@ -3,6 +3,7 @@ import { Cinzel, Cormorant_Garamond, Inter, Playfair_Display } from "next/font/g
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import LeadPopup from "@/components/LeadPopup";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 const cinzel = Cinzel({
@@ -70,6 +71,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <LeadPopup />
       </body>
       <GoogleAnalytics gaId="AW-18469847134" />
     </html>

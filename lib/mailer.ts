@@ -14,3 +14,6 @@ export function createTransporter() {
 
 export const TO = process.env.LEAD_EMAIL_TO || process.env.SMTP_USER || "";
 export const FROM = `SellMyYacht Dubai <${process.env.SMTP_USER}>`;
+
+export const esc = (s: unknown) =>
+  String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
