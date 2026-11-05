@@ -1,17 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IntlTelInput from "@intl-tel-input/react";
 import "intl-tel-input/styles";
 
 const input = "w-full border border-[#E2DDD6] px-4 py-3 text-sm text-[#1D2B3A] focus:outline-none focus:border-[#C9A84C]";
 
 export default function LeadPopup() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "done">("idle");
   const [error, setError] = useState("");
   const [phone, setPhone] = useState("");
   const [phoneOk, setPhoneOk] = useState(false);
+
+  // show the popup 5 seconds after landing
+  useEffect(() => {
+    const t = setTimeout(() => setOpen(true), 5000);
+    return () => clearTimeout(t);
+  }, []);
 
   function close() {
     setOpen(false);
