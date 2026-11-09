@@ -9,13 +9,13 @@ export const metadata: Metadata = {
 };
 
 const WHATSAPP_URL =
-  "https://api.whatsapp.com/send?phone=971503662008&text=Hi!%20I%20would%20like%20to%20speak%20with%20a%20yacht%20broker.";
+  "https://api.whatsapp.com/send?phone=971566912999&text=Hi!%20I%20would%20like%20to%20speak%20with%20a%20yacht%20broker.";
 
 const contactCards = [
   {
     icon: FaWhatsapp,
     title: "WhatsApp",
-    value: "+971 50 366 2008",
+    value: "+971 56 691 2999",
     href: WHATSAPP_URL,
     desc: "Fastest response · Available 7 days",
     color: "#25D366",
@@ -23,8 +23,8 @@ const contactCards = [
   {
     icon: FaPhone,
     title: "Phone",
-    value: "+971 50 366 2008",
-    href: "tel:+971503662008",
+    value: "+971 56 691 2999",
+    href: "tel:+971566912999",
     desc: "Sun–Thu 9am–7pm · Fri–Sat 10am–6pm",
     color: "#003057",
   },

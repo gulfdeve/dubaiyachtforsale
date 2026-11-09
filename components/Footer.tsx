@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt, FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
 const WHATSAPP_URL =
-  "https://api.whatsapp.com/send?phone=971503662008&text=Hi!%20I%20am%20interested%20in%20a%20yacht%20for%20sale%20in%20Dubai.";
+  "https://api.whatsapp.com/send?phone=971566912999&text=Hi!%20I%20am%20interested%20in%20a%20yacht%20for%20sale%20in%20Dubai.";
 
 export default function Footer() {
   return (
@@ -115,8 +115,8 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-3">
               <FaPhone className="text-[#C9A84C] shrink-0" size={13} />
-              <a href="tel:+971503662008" className="text-white/60 text-sm hover:text-[#C9A84C] transition-colors">
-                +971 50 366 2008
+              <a href="tel:+971566912999" className="text-white/60 text-sm hover:text-[#C9A84C] transition-colors">
+                +971 56 691 2999
               </a>
             </li>
             <li className="flex items-center gap-3">
