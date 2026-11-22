@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { FaWhatsapp, FaCheckCircle } from "react-icons/fa";
 
 interface Props {
@@ -25,6 +26,7 @@ const WHATSAPP_BASE =
   "https://api.whatsapp.com/send?phone=971566912999&text=Hi!%20I%20am%20interested%20in%20the%20";
 
 export default function InquiryForm({ yachtName, yachtSlug }: Props) {
+  const router = useRouter();
   const [form, setForm] = useState<FormState>({
     name: "",
     email: "",
@@ -62,7 +64,7 @@ export default function InquiryForm({ yachtName, yachtSlug }: Props) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong.");
-      setStatus("success");
+      router.push("/thank-you");
     } catch (err: unknown) {
       setStatus("error");
       setServerError(err instanceof Error ? err.message : "Something went wrong.");

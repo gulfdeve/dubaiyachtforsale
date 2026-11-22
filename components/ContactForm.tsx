@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const input = "w-full border border-[#E2DDD6] px-4 py-3 text-sm text-[#1D2B3A] focus:outline-none focus:border-[#C9A84C]";
 const label = "block text-xs text-[#6B7B8D] uppercase tracking-wide mb-1.5";
 
 export default function ContactForm() {
+  const router = useRouter();
   const [status, setStatus] = useState<"idle" | "loading" | "done">("idle");
   const [error, setError] = useState("");
 
@@ -22,7 +24,7 @@ export default function ContactForm() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
-      setStatus("done");
+      router.push("/thank-you");
     } catch (err) {
       setError(err instanceof Error && err.message ? err.message : "Something went wrong.");
       setStatus("idle");
