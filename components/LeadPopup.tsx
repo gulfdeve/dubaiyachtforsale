@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import IntlTelInput from "@intl-tel-input/react";
 import "intl-tel-input/styles";
 
 const input = "w-full border border-[#E2DDD6] px-4 py-3 text-sm text-[#1D2B3A] focus:outline-none focus:border-[#C9A84C]";
 
 export default function LeadPopup() {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "done">("idle");
   const [error, setError] = useState("");
@@ -41,7 +43,8 @@ export default function LeadPopup() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
-      setStatus("done");
+      setOpen(false);
+      router.push("/thank-you");
     } catch (err) {
       setError(err instanceof Error && err.message ? err.message : "Something went wrong.");
       setStatus("idle");
